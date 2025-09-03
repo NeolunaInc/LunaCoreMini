@@ -1,0 +1,209 @@
+# ===============================================================================
+#                           🚀 LUNACORE - COMMANDES RAPIDES
+# ===============================================================================
+
+# 🔧 CONFIGURATION INITIALE
+# ===============================================================================
+
+# Activer l'environnement virtuel (TOUJOURS FAIRE EN PREMIER)
+.venv\Scripts\Activate
+
+# Vérifier que tout fonctionne
+python -c "from lunacore.crew_system import LunaCrewSystem; print('✅ LunaCore OK')"
+
+# ===============================================================================
+# 🚀 LANCEMENT DE LUNACORE
+# ===============================================================================
+
+# Méthode recommandée (utilise le Python de l'environnement virtuel)
+.venv\Scripts\python.exe -m streamlit run app_crew.py
+
+# Avec port personnalisé si le port 8501 est occupé
+.venv\Scripts\python.exe -m streamlit run app_crew.py --server.port 8502
+
+# ===============================================================================
+# 📦 GESTION DES DÉPENDANCES
+# ===============================================================================
+
+# Installer toutes les dépendances
+pip install -r requirements.txt
+
+# Mettre à jour toutes les dépendances
+pip install --upgrade -r requirements.txt
+
+# Sauvegarder les nouvelles dépendances
+pip freeze > requirements.txt
+
+# Vérifier les packages installés
+pip list
+
+# Vérifier une dépendance spécifique
+pip show crewai
+
+# ===============================================================================
+# 🔍 TESTS ET DIAGNOSTIC
+# ===============================================================================
+
+# Tester l'import de LunaCore
+python -c "from lunacore.crew_system import LunaCrewSystem; print('✅ Import OK')"
+
+# Vérifier CrewAI
+python -c "import crewai; print('✅ CrewAI version:', crewai.__version__)"
+
+# Vérifier Streamlit
+python -c "import streamlit; print('✅ Streamlit version:', streamlit.__version__)"
+
+# Vérifier Ollama (modèles installés)
+ollama list
+
+# Tester la création d'un crew
+python -c "from lunacore.crew_system import LunaCrewSystem; crew = LunaCrewSystem(); print('✅ Crew créé avec succès')"
+
+# ===============================================================================
+# 🔄 GIT ET VERSIONING
+# ===============================================================================
+
+# Workflow de base
+git add .
+git commit -m "feat: Description des changements"
+git push origin main
+
+# Vérifier le statut
+git status
+
+# Voir l'historique
+git log --oneline -10
+
+# Créer une nouvelle branche
+git checkout -b feature/nouvelle-fonctionnalite
+
+# Pousser une nouvelle branche
+git push -u origin feature/nouvelle-fonctionnalite
+
+# Revenir sur main
+git checkout main
+
+# Fusionner une branche
+git merge feature/nouvelle-fonctionnalite
+
+# ===============================================================================
+# 🧹 NETTOYAGE ET MAINTENANCE
+# ===============================================================================
+
+# Nettoyer les caches Python
+python -Bc "import pathlib; [p.unlink() for p in pathlib.Path('.').rglob('*.py[co]')]"
+
+# Supprimer les dossiers __pycache__
+Get-ChildItem -Path . -Recurse -Name "__pycache__" | Remove-Item -Recurse -Force
+
+# Nettoyer les fichiers temporaires
+Remove-Item -Path "*.tmp", "*.log" -Force -ErrorAction SilentlyContinue
+
+# ===============================================================================
+# 🔧 GESTION DES ENVIRONNEMENTS VIRTUELS
+# ===============================================================================
+
+# Créer un nouvel environnement virtuel
+python -m venv .venv
+
+# Activer l'environnement (Windows)
+.venv\Scripts\Activate
+
+# Activer l'environnement (Linux/Mac)
+source .venv/bin/activate
+
+# Désactiver l'environnement
+deactivate
+
+# Supprimer l'environnement virtuel (si besoin de recommencer)
+Remove-Item -Path ".venv" -Recurse -Force
+
+# ===============================================================================
+# 🌐 NAVIGATION ET FICHIERS
+# ===============================================================================
+
+# Ouvrir le dossier de sortie des projets générés
+explorer sandbox\crew_output
+
+# Lister les fichiers générés
+Get-ChildItem sandbox\crew_output -Recurse
+
+# Ouvrir l'interface web
+start http://localhost:8501
+
+# ===============================================================================
+# 📊 MONITORING ET LOGS
+# ===============================================================================
+
+# Suivre les logs Streamlit en temps réel
+Get-Content streamlit.log -Wait -Tail 10
+
+# Vérifier l'utilisation des ports
+netstat -an | findstr ":8501"
+
+# Voir les processus Python actifs
+Get-Process python
+
+# ===============================================================================
+# 🛠️ DÉPANNAGE AVANCÉ
+# ===============================================================================
+
+# Réinstaller CrewAI en cas de problème
+pip uninstall crewai -y
+pip install crewai
+
+# Réinstaller toutes les dépendances
+pip uninstall -r requirements.txt -y
+pip install -r requirements.txt
+
+# Forcer la réinstallation de Streamlit
+pip install streamlit --force-reinstall
+
+# Vérifier la configuration Python
+python -c "import sys; print('Python:', sys.version); print('Executable:', sys.executable)"
+
+# ===============================================================================
+# 📝 EXEMPLES DE BRIEFS POUR TESTS RAPIDES
+# ===============================================================================
+
+# API Simple
+"Crée une API FastAPI avec 3 endpoints : GET users, POST user, DELETE user"
+
+# Dashboard
+"Dashboard Streamlit pour visualiser des données CSV avec graphiques"
+
+# CLI Tool
+"Outil en ligne de commande pour convertir des fichiers JSON en CSV"
+
+# Bot Discord
+"Bot Discord avec commande !help et !ping"
+
+# ===============================================================================
+# 🎯 WORKFLOW COMPLET DE DÉVELOPPEMENT
+# ===============================================================================
+
+# 1. Activer l'environnement
+.venv\Scripts\Activate
+
+# 2. Mettre à jour si nécessaire
+git pull origin main
+
+# 3. Installer/mettre à jour les dépendances
+pip install -r requirements.txt
+
+# 4. Lancer LunaCore
+.venv\Scripts\python.exe -m streamlit run app_crew.py
+
+# 5. Après développement, sauvegarder
+git add .
+git commit -m "feat: Description du travail effectué"
+git push origin main
+
+# ===============================================================================
+# 📞 LIENS UTILES
+# ===============================================================================
+
+# Interface LunaCore : http://localhost:8501
+# Documentation CrewAI : https://docs.crewai.com/
+# Documentation Streamlit : https://docs.streamlit.io/
+# Ollama : https://ollama.ai/docs

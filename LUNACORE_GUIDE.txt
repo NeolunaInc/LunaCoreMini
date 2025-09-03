@@ -1,0 +1,344 @@
+================================================================================
+                    🤖 LUNACORE CREWAI - GUIDE COMPLET D'UTILISATION
+================================================================================
+
+📋 DESCRIPTION:
+LunaCore est un système multi-agents utilisant CrewAI pour générer automatiquement
+du code complet. Llama3.1:8b fait tout le développement, OpenAI GPT-4 supervise.
+
+================================================================================
+                                🚀 DÉMARRAGE RAPIDE
+================================================================================
+
+1. ACTIVATION DE L'ENVIRONNEMENT VIRTUEL:
+   .venv\Scripts\Activate
+   
+2. LANCEMENT DE L'APPLICATION:
+   .venv\Scripts\python.exe -m streamlit run app_crew.py
+   
+3. OUVRIR DANS LE NAVIGATEUR:
+   http://localhost:8501
+
+================================================================================
+                            📝 COMMENT CRÉER UN LOGICIEL
+================================================================================
+
+ÉTAPE 1: DÉCRIRE VOTRE PROJET
+─────────────────────────────
+Dans l'interface Streamlit, décrivez précisément ce que vous voulez:
+
+EXEMPLES DE BRIEFS EFFICACES:
+• "Crée une API REST FastAPI avec authentification JWT, CRUD pour un blog, 
+  et endpoints pour gérer articles, utilisateurs et commentaires"
+
+• "Développe un dashboard Streamlit pour analyser des données de ventes 
+  avec graphiques interactifs, filtres par date et export CSV"
+
+• "Code un bot Discord avec commandes pour modération, musique et 
+  système de niveaux avec base de données SQLite"
+
+ÉTAPE 2: CHOISIR LE TEMPLATE
+───────────────────────────
+Sélectionnez le type de projet:
+• fastapi    → API REST moderne
+• streamlit  → Applications web interactives  
+• flask      → API web légère
+• cli        → Applications en ligne de commande
+• library    → Bibliothèques Python réutilisables
+
+ÉTAPE 3: LANCER LA GÉNÉRATION
+────────────────────────────
+1. Cliquez sur "🚀 Générer avec CrewAI"
+2. Observez le flux des agents:
+   - 🧠 OpenAI conçoit l'architecture
+   - 💻 Llama code l'application principale
+   - 🔧 Llama crée les composants backend
+   - 🧪 Llama génère les tests
+   - 📚 Llama rédige la documentation
+
+ÉTAPE 4: RÉCUPÉRER LES FICHIERS
+──────────────────────────────
+• Visualisez le code dans les onglets
+• Téléchargez le projet complet (ZIP)
+• Les fichiers sont aussi dans: sandbox/crew_output/
+
+================================================================================
+                            💻 INDEX DES COMMANDES
+================================================================================
+
+🐍 PYTHON & ENVIRONNEMENT VIRTUEL
+─────────────────────────────────
+# Créer un nouvel environnement virtuel
+python -m venv .venv
+
+# Activer l'environnement (Windows)
+.venv\Scripts\Activate
+
+# Activer l'environnement (Linux/Mac)
+source .venv/bin/activate
+
+# Désactiver l'environnement
+deactivate
+
+# Installer les dépendances
+pip install -r requirements.txt
+
+# Sauvegarder les dépendances
+pip freeze > requirements.txt
+
+# Lister les packages installés
+pip list
+
+# Mettre à jour pip
+python -m pip install --upgrade pip
+
+📦 STREAMLIT
+───────────
+# Lancer avec Python de l'environnement virtuel
+.venv\Scripts\python.exe -m streamlit run app_crew.py
+
+# Lancer normalement (si PATH configuré)
+streamlit run app_crew.py
+
+# Lancer sur un port spécifique
+streamlit run app_crew.py --server.port 8502
+
+# Version de Streamlit
+streamlit version
+
+🧪 TESTS & DÉVELOPPEMENT
+────────────────────────
+# Tester les imports
+python -c "from lunacore.crew_system import LunaCrewSystem; print('Import OK')"
+
+# Tester CrewAI
+python -c "import crewai; print('CrewAI version:', crewai.__version__)"
+
+# Exécuter des tests
+python -m pytest tests/
+
+# Lancer un script Python
+python nom_du_script.py
+
+# Mode interactif Python
+python -i
+
+🔧 GIT & VERSIONING
+──────────────────
+# Initialiser un repository
+git init
+
+# Ajouter tous les fichiers
+git add .
+
+# Ajouter des fichiers spécifiques
+git add fichier1.py fichier2.py
+
+# Commit avec message
+git commit -m "Description des changements"
+
+# Voir le statut
+git status
+
+# Voir l'historique
+git log --oneline
+
+# Créer une nouvelle branche
+git checkout -b nouvelle-branche
+
+# Changer de branche
+git checkout nom-branche
+
+# Fusionner une branche
+git merge nom-branche
+
+# Pousser vers GitHub
+git push origin main
+
+# Première fois (configure l'upstream)
+git push -u origin main
+
+# Récupérer les changements
+git pull origin main
+
+# Cloner un repository
+git clone https://github.com/username/repo.git
+
+# Ajouter un remote
+git remote add origin https://github.com/username/repo.git
+
+# Voir les remotes
+git remote -v
+
+🌐 GITHUB WORKFLOW COMPLET
+─────────────────────────
+# 1. Faire des changements dans le code
+# 2. Ajouter les fichiers modifiés
+git add .
+
+# 3. Committer avec un message descriptif
+git commit -m "feat: Ajout du système multi-agents CrewAI"
+
+# 4. Pousser vers GitHub
+git push origin main
+
+# Workflow pour une nouvelle fonctionnalité:
+git checkout -b feature/nouvelle-fonctionnalite
+# ... faire les changements ...
+git add .
+git commit -m "feat: Nouvelle fonctionnalité"
+git push origin feature/nouvelle-fonctionnalite
+# Puis créer une Pull Request sur GitHub
+
+🔍 DIAGNOSTIC & DEBUG
+────────────────────
+# Vérifier la version Python
+python --version
+
+# Voir les variables d'environnement
+Get-ChildItem Env: | Where-Object {$_.Name -like "*PYTHON*"}
+
+# Voir le chemin Python utilisé
+python -c "import sys; print(sys.executable)"
+
+# Vérifier les modules installés
+python -c "help('modules')"
+
+# Debugger les imports
+python -v -c "import crewai"
+
+# Nettoyer les caches Python
+python -Bc "import pathlib; [p.unlink() for p in pathlib.Path('.').rglob('*.py[co]')]"
+
+📂 GESTION DES FICHIERS
+──────────────────────
+# Lister les fichiers (Windows)
+Get-ChildItem -Name
+dir
+
+# Lister les fichiers (Linux/Mac)
+ls -la
+
+# Créer un dossier
+mkdir nom_dossier
+
+# Supprimer un fichier
+Remove-Item fichier.txt
+
+# Copier un fichier
+Copy-Item source.txt destination.txt
+
+# Naviguer dans les dossiers
+cd chemin/vers/dossier
+cd ..  # Remonter d'un niveau
+cd /   # Aller à la racine
+
+================================================================================
+                            🛠️ DÉPANNAGE COURANT
+================================================================================
+
+❌ ERREUR: "No module named 'crewai'"
+SOLUTION: 
+1. Vérifier que l'environnement virtuel est activé
+2. Réinstaller: pip install crewai
+3. Utiliser: .venv\Scripts\python.exe -m streamlit run app_crew.py
+
+❌ ERREUR: "Streamlit command not found"
+SOLUTION: 
+1. Utiliser le chemin complet: .venv\Scripts\python.exe -m streamlit run app_crew.py
+2. Ou installer globalement: pip install streamlit
+
+❌ ERREUR: Import errors
+SOLUTION:
+1. Nettoyer les caches: python -Bc "import pathlib; [p.unlink() for p in pathlib.Path('.').rglob('*.py[co]')]"
+2. Réinstaller les dépendances: pip uninstall -y -r requirements.txt && pip install -r requirements.txt
+
+❌ ERREUR: Port déjà utilisé
+SOLUTION: streamlit run app_crew.py --server.port 8502
+
+❌ ERREUR: Git authentication
+SOLUTION:
+1. Configurer: git config --global user.name "Votre Nom"
+2. Configurer: git config --global user.email "votre@email.com"
+3. Utiliser un token GitHub au lieu du mot de passe
+
+================================================================================
+                            📁 STRUCTURE DU PROJET
+================================================================================
+
+LunaCoreMini_v2/
+├── .venv/                          # Environnement virtuel Python
+├── .env                            # Variables d'environnement (clés API)
+├── .gitignore                      # Fichiers à ignorer par Git
+├── app_crew.py                     # Interface Streamlit principale
+├── requirements.txt                # Dépendances Python
+├── README.md                       # Documentation du projet
+├── LUNACORE_GUIDE.txt             # Ce guide (vous êtes ici!)
+│
+├── lunacore/                       # Package principal
+│   ├── __init__.py
+│   └── crew_system.py             # Système multi-agents CrewAI
+│
+└── sandbox/
+    └── crew_output/               # Projets générés par CrewAI
+
+================================================================================
+                            🔐 CONFIGURATION REQUISE
+================================================================================
+
+FICHIER .env (obligatoire):
+OPENAI_API_KEY=votre_clé_openai_ici
+OLLAMA_HOST=http://localhost:11434
+
+PRÉREQUIS:
+• Python 3.13+
+• Ollama installé avec Llama3.1:8b
+• Clé API OpenAI
+• Git configuré
+
+INSTALLATION OLLAMA:
+1. Télécharger: https://ollama.ai/download
+2. Installer le modèle: ollama pull llama3.1:8b
+3. Vérifier: ollama list
+
+================================================================================
+                            ✨ CONSEILS PRO
+================================================================================
+
+🎯 POUR DE MEILLEURS RÉSULTATS:
+• Soyez précis dans vos descriptions
+• Mentionnez les technologies souhaitées
+• Spécifiez les fonctionnalités exactes
+• Indiquez le type d'interface (web, CLI, API)
+
+🚀 WORKFLOW OPTIMAL:
+1. Brief détaillé → Template approprié → Génération
+2. Examiner le code généré → Télécharger → Tester
+3. Modifier si nécessaire → Régénérer des parties
+
+🔄 ITÉRATION:
+• Vous pouvez régénérer des parties spécifiques
+• Affinez votre brief si le résultat ne convient pas
+• Combinez plusieurs générations pour des projets complexes
+
+================================================================================
+                            📞 SUPPORT & RESSOURCES
+================================================================================
+
+🔗 DOCUMENTATION:
+• CrewAI: https://docs.crewai.com/
+• Streamlit: https://docs.streamlit.io/
+• Ollama: https://ollama.ai/docs
+
+🐛 BUGS & FEATURES:
+• Créez des issues sur GitHub
+• Décrivez précisément le problème
+• Incluez les logs d'erreur
+
+📧 CONTACT:
+• GitHub: https://github.com/NeolunaInc/LunaCoreMini
+• Documentation: Voir README.md
+
+================================================================================
+                        🎉 BONNE CRÉATION AVEC LUNACORE !
+================================================================================
