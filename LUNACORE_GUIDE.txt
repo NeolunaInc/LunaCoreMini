@@ -234,7 +234,72 @@ cd ..  # Remonter d'un niveau
 cd /   # Aller à la racine
 
 ================================================================================
-                            🛠️ DÉPANNAGE COURANT
+                        📊 COMPRENDRE LES LOGS CREWAI
+================================================================================
+
+🔍 INTERPRÉTATION DES LOGS EN TEMPS RÉEL
+────────────────────────────────────────
+
+Quand vous voyez ces logs, voici ce qui se passe:
+
+🚀 Crew: crew
+└── 📋 Task: b3e5aa24-514f-4d48-ba5d-4b14683d7553
+    Status: Executing Task...
+    ├── 🔧 Failed Delegate work to coworker (16)
+    ├── 🔧 Failed Delegate work to coworker (19)
+    └── 🔧 Failed Delegate work to coworker (22)
+
+📝 SIGNIFICATION DES ÉLÉMENTS:
+
+🚀 Crew: crew
+→ Le système multi-agents principal est actif
+
+📋 Task: [ID unique]
+→ Une tâche spécifique est en cours d'exécution
+
+🔧 Failed Delegate work to coworker (16)
+→ L'agent essaie de déléguer du travail mais n'y arrive pas
+→ Les numéros indiquent les tentatives successives
+→ C'EST NORMAL ! L'agent persiste jusqu'à trouver une solution
+
+🧠 Memory Update Overall
+→ L'agent sauvegarde ses apprentissages:
+  ├── Short Term Memory: Contexte immédiat
+  ├── Long Term Memory: Connaissances durables  
+  └── Entity Memory: Infos sur les entités spécifiques
+
+� Using Ask question to coworker (1)
+→ L'agent demande de l'aide à un collègue
+
+✅ Memory Retrieval Completed
+→ L'agent consulte ses mémoires pour prendre des décisions
+
+🧠 Thinking...
+→ L'agent réfléchit à la solution
+
+⚡ POURQUOI LES ÉCHECS DE DÉLÉGATION ?
+───────────────────────────────────
+• Les autres agents sont occupés
+• La tâche ne nécessite pas de délégation
+• L'agent préfère faire le travail lui-même
+• Configuration qui limite la délégation
+
+✅ C'EST NORMAL ET BÉNÉFIQUE !
+─────────────────────────────
+• Montre que les agents communiquent
+• Indique qu'ils persistent jusqu'à réussir
+• Prouve que le système de mémoire fonctionne
+• Démontre la collaboration intelligente
+
+🎯 CONSEILS POUR OPTIMISER:
+─────────────────────────
+• Soyez plus spécifique dans votre brief
+• Choisissez le bon template
+• Patientez, la qualité prend du temps
+• Surveillez la progression dans l'interface
+
+================================================================================
+                            �🛠️ DÉPANNAGE COURANT
 ================================================================================
 
 ❌ ERREUR: "No module named 'crewai'"
@@ -261,6 +326,20 @@ SOLUTION:
 1. Configurer: git config --global user.name "Votre Nom"
 2. Configurer: git config --global user.email "votre@email.com"
 3. Utiliser un token GitHub au lieu du mot de passe
+
+❌ LOGS CREWAI TROP VERBEUX:
+SOLUTION:
+1. C'est normal, les agents travaillent dur !
+2. Surveillez l'interface Streamlit pour les résultats
+3. Patientez, la qualité nécessite du temps
+4. Les échecs de délégation sont normaux
+
+❌ GÉNÉRATION TROP LENTE:
+SOLUTION:
+1. Simplifiez votre brief
+2. Utilisez des descriptions plus précises
+3. Vérifiez qu'Ollama fonctionne: ollama list
+4. Redémarrez Ollama si nécessaire: ollama serve
 
 ================================================================================
                             📁 STRUCTURE DU PROJET

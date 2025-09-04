@@ -132,92 +132,96 @@ with st.sidebar:
     st.write("• **CLI** - Application ligne de commande")
     st.write("• **Library** - Bibliothèque Python")
 
-# Interface principale
-col1, col2 = st.columns([2, 1])
+# Onglets pour l'interface principale
+tab_generate, tab_logs = st.tabs(["🚀 Génération", "📊 Logs"])
 
-with col1:
-    st.subheader("📝 Décrivez votre projet")
+# Onglet de génération
+with tab_generate:
+    col1, col2 = st.columns([2, 1])
     
-    # Templates rapides
-    quick_templates = {
-        "Custom": "",
-        "API REST avec FastAPI": "Crée une API REST avec FastAPI, authentification JWT, CRUD pour gérer des utilisateurs et des articles de blog, avec validation Pydantic et documentation automatique",
-        "Dashboard Streamlit": "Crée un dashboard Streamlit pour visualiser des données de ventes avec graphiques interactifs, filtres par date et région, et export PDF",
-        "CLI Python": "Crée un outil CLI Python pour gérer des fichiers avec commandes pour lister, copier, supprimer, avec argparse et gestion d'erreurs",
-        "Bot Discord": "Crée un bot Discord avec commandes pour modération, musique et jeux, utilisant discord.py avec gestion des événements",
-        "Scraper Web": "Crée un scraper web avec BeautifulSoup pour extraire des données de sites e-commerce, avec gestion des proxies et sauvegarde CSV/JSON"
-    }
-    
-    selected_template = st.selectbox(
-        "🚀 Templates rapides (optionnel)",
-        list(quick_templates.keys())
-    )
-    
-    # Brief du projet
-    if selected_template != "Custom":
-        brief = st.text_area(
-            "Brief du projet",
-            value=quick_templates[selected_template],
-            height=120,
-            help="Vous pouvez modifier ce template selon vos besoins"
-        )
-    else:
-        brief = st.text_area(
-            "Brief du projet",
-            height=120,
-            placeholder="Décrivez en détail le projet que vous souhaitez générer...\n\nExemple: Crée une API REST avec FastAPI pour gérer une bibliothèque. Inclus authentification JWT, CRUD pour livres et auteurs, recherche par titre/auteur, système de prêt avec dates, et documentation Swagger automatique.",
-            help="Plus vous êtes précis, meilleur sera le résultat !"
-        )
-    
-    # Paramètres du projet
-    col1a, col1b = st.columns(2)
-    
-    with col1a:
-        template_type = st.selectbox(
-            "🏗️ Type de template",
-            ["fastapi", "streamlit", "flask", "cli", "library"],
-            help="Le type de projet détermine la structure et les dépendances"
-        )
-    
-    with col1b:
-        project_name = st.text_input(
-            "📁 Nom du projet (optionnel)",
-            placeholder="mon_super_projet",
-            help="Laissez vide pour génération automatique"
-        )
-
-with col2:
-    st.subheader("🔄 Processus de génération")
-    
-    st.markdown("""
-    ```mermaid
-    graph TD
-        A[📝 Brief] --> B[🧠 Architecture OpenAI]
-        B --> C[💻 Code Principal Llama]
-        B --> D[🔧 Backend Llama]
-        C --> E[🧪 Tests Llama]
-        D --> E
-        E --> F[📚 Documentation Llama]
-        F --> G[✅ Projet Complet]
+    with col1:
+        st.subheader("📝 Décrivez votre projet")
         
-        style A fill:#e1f5fe
-        style B fill:#fff3e0
-        style C fill:#f3e5f5
-        style D fill:#f3e5f5
-        style E fill:#e8f5e8
-        style F fill:#fff8e1
-        style G fill:#e0f2f1
-    ```
-    """)
-    
-    st.info("""
-    **💡 Conseils pour un bon brief:**
-    
-    • Soyez spécifique sur les fonctionnalités
-    • Mentionnez les technologies préférées
-    • Décrivez les cas d'usage principaux
-    • Précisez le type d'interface (API, CLI, web)
-    """)
+        # Templates rapides
+        quick_templates = {
+            "Custom": "",
+            "API REST avec FastAPI": "Crée une API REST avec FastAPI, authentification JWT, CRUD pour gérer des utilisateurs et des articles de blog, avec validation Pydantic et documentation automatique",
+            "Dashboard Streamlit": "Crée un dashboard Streamlit pour visualiser des données de ventes avec graphiques interactifs, filtres par date et région, et export PDF",
+            "CLI Python": "Crée un outil CLI Python pour gérer des fichiers avec commandes pour lister, copier, supprimer, avec argparse et gestion d'erreurs",
+            "Bot Discord": "Crée un bot Discord avec commandes pour modération, musique et jeux, utilisant discord.py avec gestion des événements",
+            "Scraper Web": "Crée un scraper web avec BeautifulSoup pour extraire des données de sites e-commerce, avec gestion des proxies et sauvegarde CSV/JSON"
+        }
+        
+        selected_template = st.selectbox(
+            "🚀 Templates rapides (optionnel)",
+            list(quick_templates.keys())
+        )
+        
+        # Brief du projet
+        if selected_template != "Custom":
+            brief = st.text_area(
+                "Brief du projet",
+                value=quick_templates[selected_template],
+                height=120,
+                help="Vous pouvez modifier ce template selon vos besoins"
+            )
+        else:
+            brief = st.text_area(
+                "Brief du projet",
+                height=120,
+                placeholder="Décrivez en détail le projet que vous souhaitez générer...\n\nExemple: Crée une API REST avec FastAPI pour gérer une bibliothèque. Inclus authentification JWT, CRUD pour livres et auteurs, recherche par titre/auteur, système de prêt avec dates, et documentation Swagger automatique.",
+                help="Plus vous êtes précis, meilleur sera le résultat !"
+            )
+        
+        # Paramètres du projet
+        col1a, col1b = st.columns(2)
+        
+        with col1a:
+            template_type = st.selectbox(
+                "🏗️ Type de template",
+                ["fastapi", "streamlit", "flask", "cli", "library"],
+                help="Le type de projet détermine la structure et les dépendances"
+            )
+        
+        with col1b:
+            project_name = st.text_input(
+                "📁 Nom du projet (optionnel)",
+                placeholder="mon_super_projet",
+                help="Laissez vide pour génération automatique"
+            )
+
+    with col2:
+        st.subheader("🔄 Processus de génération")
+        
+        st.markdown("""
+        ```mermaid
+        graph TD
+            A[📝 Brief] --> B[🧠 Architecture OpenAI]
+            B --> C[💻 Code Principal Llama]
+            B --> D[🔧 Backend Llama]
+            C --> E[🧪 Tests Llama]
+            D --> E
+            E --> F[📚 Documentation Llama]
+            F --> G[✅ Projet Complet]
+            
+            style A fill:#e1f5fe
+            style B fill:#fff3e0
+            style C fill:#f3e5f5
+            style D fill:#f3e5f5
+            style E fill:#e8f5e8
+            style F fill:#fff8e1
+            style G fill:#e0f2f1
+        ```
+        """)
+        
+        st.info("""
+        **💡 Conseils pour un bon brief:**
+        
+        • Soyez spécifique sur les fonctionnalités
+        • Mentionnez les technologies préférées
+        • Décrivez les cas d'usage principaux
+        • Précisez le type d'interface (API, CLI, web)
+        """)
 
 # Zone de génération
 st.divider()
@@ -412,6 +416,70 @@ python main.py --help
         
         # Affichage de la stack trace en mode debug
         with st.expander("🔍 Détails techniques (debug)"):
+            st.code(traceback.format_exc())
+
+# Onglet des logs
+with tab_logs:
+    st.subheader("📊 Logs du système")
+    
+    # Import du module de journalisation
+    from lunacore.logger import get_logger
+    
+    # Boutons de filtrage
+    st.write("Filtrer par type:")
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        show_info = st.checkbox("ℹ️ Info", value=True)
+    with col2:
+        show_warning = st.checkbox("⚠️ Warning", value=True)
+    with col3:
+        show_error = st.checkbox("❌ Error", value=True)
+    with col4:
+        show_success = st.checkbox("✅ Success", value=True)
+    
+    # Bouton de rafraîchissement
+    if st.button("🔄 Rafraîchir les logs", use_container_width=True):
+        st.success("Logs rafraîchis")
+    
+    # Récupération et affichage des logs
+    try:
+        luna_logger = get_logger()
+        logs = luna_logger.get_logs()
+        
+        if logs:
+            # Création d'un tableau pour les logs
+            filtered_logs = []
+            for log in logs:
+                level = log.get('level', 'INFO')
+                if (level == "INFO" and show_info) or \
+                   (level == "WARNING" and show_warning) or \
+                   (level == "ERROR" and show_error) or \
+                   (level == "SUCCESS" and show_success):
+                    filtered_logs.append(log)
+            
+            if filtered_logs:
+                # En-têtes du tableau
+                st.write("### Derniers logs")
+                
+                # Tableau des logs
+                data = []
+                for log in filtered_logs:
+                    icon = "ℹ️" if log['level'] == "INFO" else "⚠️" if log['level'] == "WARNING" else "❌" if log['level'] == "ERROR" else "✅"
+                    data.append({
+                        "Heure": log['timestamp'],
+                        "Type": f"{icon} {log['level']}",
+                        "Catégorie": log['category'],
+                        "Message": log['message']
+                    })
+                
+                st.table(data)
+            else:
+                st.info("Aucun log correspondant aux filtres sélectionnés.")
+        else:
+            st.info("Aucun log disponible pour le moment.")
+    except Exception as e:
+        st.error(f"Erreur lors de la récupération des logs: {e}")
+        with st.expander("Détails"):
             st.code(traceback.format_exc())
 
 # Footer

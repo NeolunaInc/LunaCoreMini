@@ -1,0 +1,9 @@
+{
+  "complexity": 25,
+  "planner": "openai",
+  "backend": "ollama",
+  "frontend": "ollama",
+  "data": "ollama",
+  "tests": "ollama",
+  "reason": "Complexit\u00e9 25<60 \u2192 Llama prioritaire, OpenAI en secours."
+}

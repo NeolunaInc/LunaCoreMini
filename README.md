@@ -50,6 +50,18 @@ ollama pull llama3.1:8b
 ollama list
 ```
 
+### Activation rapide (Windows PowerShell)
+
+Un helper PowerShell est fourni pour activer la `.venv` et exécuter des commandes avec l'environnement virtuel :
+
+```powershell
+# Crée .venv si nécessaire et lance Streamlit
+.\scripts\run_in_venv.ps1 -Create -- streamlit run app_crew.py
+
+# Lance Streamlit si .venv existe déjà
+.\scripts\run_in_venv.ps1 -- streamlit run app_crew.py
+```
+
 ### Configuration du Projet
 ```bash
 # 1. Cloner le repository
